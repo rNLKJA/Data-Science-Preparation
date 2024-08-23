@@ -5,16 +5,16 @@
 - [Kubernetes](#kubernetes)
   - [Table of Content](#table-of-content)
   - [History and Motivation](#history-and-motivation)
-    - [**2000s: Traditional Deployment Era**](#2000s-traditional-deployment-era)
-    - [**2010s: Virtualized Deployment Era**](#2010s-virtualized-deployment-era)
-    - [**2020s: Container Deployment Era**](#2020s-container-deployment-era)
+    - [2000s: Traditional Deployment Era](#2000s-traditional-deployment-era)
+    - [2010s: Virtualized Deployment Era](#2010s-virtualized-deployment-era)
+    - [2020s: Container Deployment Era](#2020s-container-deployment-era)
   - [Technology Overview](#technology-overview)
     - [Planes and Nodes](#planes-and-nodes)
     - [Kubernets System Components](#kubernets-system-components)
 
 ## History and Motivation
 
-### **2000s: Traditional Deployment Era**
+### 2000s: Traditional Deployment Era
 
 During the 2000s, we experienced what is known as the "Traditional Deployment Era". This period was characterized by:
 
@@ -24,7 +24,7 @@ During the 2000s, we experienced what is known as the "Traditional Deployment Er
 - **Monolithic Architecture**: The prevalent architectural style was monolithic, where applications were built as single, indivisible units.
 - **Homegrown Monitoring Tools**: Monitoring and managing applications required custom-built tools due to the lack of standardized solutions.
 
-### **2010s: Virtualized Deployment Era**
+### 2010s: Virtualized Deployment Era
 
 The 2010s marked the transition to the "Virtualized Deployment Era". Key developments during this time included:
 
@@ -34,7 +34,7 @@ The 2010s marked the transition to the "Virtualized Deployment Era". Key develop
 - **Improved Tooling**: The emergence of better tooling made it practical to manage a larger number of applications and cloud resources.
 - **Challenges with Scale**: Despite the improvements, managing large numbers of cloud resources remained a significant challenge.
 
-### **2020s: Container Deployment Era**
+### 2020s: Container Deployment Era
 
 In the 2020s, we entered the "Container Deployment Era", which brought about transformative changes in how workloads are managed:
 
