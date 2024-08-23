@@ -81,6 +81,7 @@ I bring a comprehensive skill set that combines technical expertise, research ac
 
 | Date | Topic | Resources Used | 
 |------|-------|----------------|
+| 23-Aug-2024 | Kubernets | History & Technology Overview |  
 | 23-Aug-2024 | Machine Learning | Bias-Variance Trade-off |  
 
 ---
