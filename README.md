@@ -6,9 +6,11 @@ Welcome to my Data Science Preparation repository! This space is dedicated to tr
 
 ## Table of Contents
 
-- [About Me](#about-me)
-- [Topic Index](#topic-index)
-- [Progress Tracker](#progress-tracker)
+- [Data Science Preparation](#data-science-preparation)
+  - [Table of Contents](#table-of-contents)
+  - [About Me](#about-me)
+  - [Topic Index](#topic-index)
+  - [Progress Tracker](#progress-tracker)
 
 ## About Me
 
@@ -77,11 +79,9 @@ I bring a comprehensive skill set that combines technical expertise, research ac
 
 ## Progress Tracker
 
-| Date | Topic | Resources Used | Notes | Hours Spent |
-|------|-------|----------------|-------|-------------|
-| 24-Aug-2024 | Machine Learning | Coursera - Andrew Ng's course | Reviewed linear regression | 2 |
-<!-- | 25-Aug-2024 | AWS Cloud Computing | AWS Documentation | Studied EC2 and S3 basics | 3 |
-| ... | ... | ... | ... | ... | -->
+| Date | Topic | Resources Used | 
+|------|-------|----------------|
+| 23-Aug-2024 | Machine Learning | Bias-Variance Trade-off |  
 
 ---
 
