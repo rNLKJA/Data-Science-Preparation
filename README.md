@@ -81,6 +81,9 @@ I bring a comprehensive skill set that combines technical expertise, research ac
 
 | Date | Topic | Resources Used | 
 |------|-------|----------------|
+| 25-Aug-2024 | Machine Learning | Imbalanced labels | 
+| 25-Aug-2024 | Machine Learning | Multicollinearity |
+| 25-Aug-2024 | Machine Learning | Cross-validation |
 | 24-Aug-2024 | Storytelling with Data | Let's practice 1.9, 1.10 |
 | 24-Aug-2024 | Google Cyberseucrity | Foundation model 1 |
 | 23-Aug-2024 | Kubernets | History & Technology Overview |  
