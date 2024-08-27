@@ -17,6 +17,12 @@ This section covers concepts, techniques, and applications of machine learning f
     - [Imbalanced Labels](#imbalanced-labels)
       - [Best Practice #1: Choose the right metric for evaluating model performance.](#best-practice-1-choose-the-right-metric-for-evaluating-model-performance)
       - [Best Practice #2: Conduct re-sampling of miority and majority class](#best-practice-2-conduct-re-sampling-of-miority-and-majority-class)
+      - [Best Practice #3: Try using cost-sensitive learning](#best-practice-3-try-using-cost-sensitive-learning)
+    - [What is the curse of dimensionality? How do you prevent it?](#what-is-the-curse-of-dimensionality-how-do-you-prevent-it)
+      - [How to you mitigate curse of dimensionality?](#how-to-you-mitigate-curse-of-dimensionality)
+    - [What is AUC? How is it helpful when labels are imbalanced?](#what-is-auc-how-is-it-helpful-when-labels-are-imbalanced)
+      - [AUC (Area Under the Curve)](#auc-area-under-the-curve)
+      - [ROC Curve (Receiver Operating Charateristic Curve)](#roc-curve-receiver-operating-charateristic-curve)
   - [Machine Learning Algorithm](#machine-learning-algorithm)
   - [Deep Learning](#deep-learning)
   - [Machine Learning Prediction](#machine-learning-prediction)
@@ -170,7 +176,71 @@ The intuition behind downsampling and oversamping is simple. The majority class 
 
 <img src="https://files.cdn.thinkific.com/file_uploads/481328/images/d86/aa5/f34/1621484922493.jpg" align='center' width=500 />
 
+When there's too much noise from the majority class (orange) around the miniority class (blue) as shown in the illustration on the left above, the boundary between the orange and blue data points becomes fuzzy. Down-sampling can reduce the noise; thereby, help a classification model form a better boundary as shown on the right.
 
+With a similarity objective in mind, oversampling of miniority class can also be performed. Essentially, this is boostrapping the minority class to improve the balance between the ratio of goods and bads.
+
+#### Best Practice #3: Try using cost-sensitive learning
+
+In credit fraud modelling, there are two types of decisions and four types of outcomes. In terms of decisions, the model labels them as fraud or non-fraud. But, based on the actual label, there are four outcomes each associated with its own cost:
+
+| | Fraud | Non-Fraud |
+| -- | -- | -- |
+| Pred Fraud | c(1,1) | c(1,0) |
+| Pred Non-Fraud | c(0,1) | c(0,0) |
+
+There is a multitude of cost-sensitive learning. One main type you should be aware of is cost-sensitive learning with respect to threshold determination.
+
+When class is highly imbalanced, you never want to choose 0.5 as the threshold for predicting class as fraud. Some measure incorporating cost is required.
+
+C(1,0) is the cost of false positive (FP) while C(0,1) is the cost of false negative (FN). You can determine your threshold, P*, based on the following:
+
+$$
+\cfrac{\text{False Positve}}{\text{False Negative} + \text{False Positive}} = P^*
+$$
+
+Predict class as fraud if $\Pr(\text{Fraud} | X) \ge P^*$.
+
+The derivation of the formula is out of scope in the solution. There is plenty of literature that covers the topic of what is an optimal model threshold based on costs. Given that not all fraud problems are the same and the cost of each determination is different from company to company, cost-sensitive classification is subject to hange.
+
+### What is the curse of dimensionality? How do you prevent it?
+
+The curse of dimensionality refers to a set of challenges and problems that arise when working with high-dimensionality data (datasets with many features). The core issue is the sparsity:
+
+As the number of dimensions increases, the volumne of the data space increases exponentially. This means data points become increasingly scattered and far apart, making it difficult to find patterns.
+
+As the data points become less clustered and sparse, the decision boundary begins to overfit, which decreases generalistion. Additionally, curse dimensionality, unnecessarily increases model training and inference time.
+
+#### How to you mitigate curse of dimensionality?
+
+The following methods can handle curse of dimensionality:
+- **Dimensionality Reduction**: Techniques like PCA to project data into lower dimensions
+- **Features Selection**: Identify the most important features and dropping the rest
+- **Reguarlisation Parameters**: Every common ML algorihtms contain parameters that mitigate against overfitting.
+  - Decision Tree-Pruning
+  - Random Forest - Bootstrap, Number of Trees, Column and Row Sample
+  - XGBoost - Bootstrap, Column and Row Sample, L1/L2 Regularisation Term
+  - Neural Network - Dropout, L1/L2 Regularisation Term 
+
+### What is AUC? How is it helpful when labels are imbalanced?
+
+Suppose there are a total of 100 observations - 99 goods and 1 bad. Your classification model predicts all 100 observations as good, resulting in 99% accuracy. The model is great at correctly classifying goods with a 100% true positive rate, but horrendous at classifying the bad with 100% false positive rate.
+
+<img src="https://files.cdn.thinkific.com/file_uploads/481328/images/6b9/bdf/c46/download-2.png?width=1920&dpr=2" width=500 align=center />
+
+AUC is the metric to apply in such a case when the labels are imbalanced. AUC stands for "Area Under the Curve", and it is typically used in the context of the ROC curve, or Receiver Operating Characteristics curve, in statistics and machine learning. Here's a breakdown of each term:
+
+#### AUC (Area Under the Curve)
+
+1. **Overview**: AUC refers the area under a curve in a graph. In the context of classification problems in machine learning and statistics, it usually refers to the area under the ROC curve, which is a graphical representation of a model's diagnostic ability.
+2. **Significance**: AUC provides a single scalar value that represents the likelihood that the classifer will rank a randomly chosen positive instance higher than a randomly chosen negative one. It's often used to evalute the performance of binary classication algorithms, though it can be extended to multi-class classification.
+3. **Range**: AUC ranges from 0 to 1, with a value of 05 representing a model that performs no better than random and a value of 1 representing a perfect model. Generally, an AUC above 0.7 is considered acceptable, but this threshold may vary dpeending on the application.
+
+#### ROC Curve (Receiver Operating Charateristic Curve)
+
+1. **Plot**: The ROC curve is a graphical plot that illustrates the diagnostic ability of a binary classifier as its discrimination threshold is varied. It is created by plotting the true positive rate (TPR, or sensitivity) against the false positive rate (FPR, or 1-specificity)
+2. **Interpretation**: Each point on the ROC curve represents a different threshold used to convert the model's real-valued predictions into binary classifications. The cruve illustrates the trade-off between sensitivity and specificity at various thresholds
+3. **Usage**: It's a common used tool for evaluating the performance of classification algorithms, especially in the field of medical decision-making, and for comparing different classifiers
 
 ## Machine Learning Algorithm
 
