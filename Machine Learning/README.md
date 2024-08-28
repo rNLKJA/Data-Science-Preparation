@@ -23,6 +23,12 @@ This section covers concepts, techniques, and applications of machine learning f
     - [What is AUC? How is it helpful when labels are imbalanced?](#what-is-auc-how-is-it-helpful-when-labels-are-imbalanced)
       - [AUC (Area Under the Curve)](#auc-area-under-the-curve)
       - [ROC Curve (Receiver Operating Charateristic Curve)](#roc-curve-receiver-operating-charateristic-curve)
+    - [Model Evaluation Metrics](#model-evaluation-metrics)
+    - [How do you evaluate whether a model is underfitting or overfitting?](#how-do-you-evaluate-whether-a-model-is-underfitting-or-overfitting)
+    - [How do you conduct features selection when building models?](#how-do-you-conduct-features-selection-when-building-models)
+      - [Types of Feature Selection](#types-of-feature-selection)
+      - [Choosing the right techniques](#choosing-the-right-techniques)
+      - [Additional Tips](#additional-tips)
   - [Machine Learning Algorithm](#machine-learning-algorithm)
   - [Deep Learning](#deep-learning)
   - [Machine Learning Prediction](#machine-learning-prediction)
@@ -241,6 +247,85 @@ AUC is the metric to apply in such a case when the labels are imbalanced. AUC st
 1. **Plot**: The ROC curve is a graphical plot that illustrates the diagnostic ability of a binary classifier as its discrimination threshold is varied. It is created by plotting the true positive rate (TPR, or sensitivity) against the false positive rate (FPR, or 1-specificity)
 2. **Interpretation**: Each point on the ROC curve represents a different threshold used to convert the model's real-valued predictions into binary classifications. The cruve illustrates the trade-off between sensitivity and specificity at various thresholds
 3. **Usage**: It's a common used tool for evaluating the performance of classification algorithms, especially in the field of medical decision-making, and for comparing different classifiers
+
+### Model Evaluation Metrics
+
+Consider a model that is designed to predict whether a user will make a purchase after visiting a product sales page. From a total of 10,000 users who visited the page. 1,500 made a purchase. Among the users the model predicted as potential buyers. 1,000 were accurately identified as buyers, but 700 were falsely predicted as buyers. Given this information, how can we assess the performance of this model?
+
+For an imbalanced dataset like this, where the number of conversions is much smaller than non-conversions, relying solely on accuracy can overstate the model's effectiveness. Precision, recall, and the F1/F2 scores offer a more balanced and insightful evaluation of the model's performance, highlighting areas for improvement in predicting user conversions on the sales page.
+
+- Total users who acutally made a purchase (Converted): 1,500
+- Users correctly predicted to have made a purchase (True Positive): 1,000
+- Users incorrectly predicted to have made a purchase (False Positive): 700
+- Total users who visited the sales page: 10,000
+
+Now we calcuate the missing components for our evaluation:
+- True Negatives (TN), those who were not predicted to buy and did not buy: This is derived as the total number of users minus True Positives, False Positives, and False Negatives, which is 10,000 - 1,000 - 700 - 1,500 = 6,800.
+- False Negatives (FN), those who made a purchase but were not predicted as buyers: This is the total number of actual conversions minus True Positives, which is 1,500 - 1,000 = 500.
+
+Given these calculations, we can now discuss the model's performance using various metrics:
+1. **Accuracy**: Calcuated as $\cfrac{TP + TN}{TP + TN + FP + FN} = \cfrac{1,000 + 6,800}{1,000 + 6,800 + 700 + 500} = 0.78$. However, accuracy can be misleading in cases of imbalanced classes, such as when the number of conversions is significantly less than non-conversions.
+2. **Prediction and Recall**: These metrics offer a more nuanced view of the model's performance.
+   - Precision (the proportion of predicted conversions that were correct) is calculated as $\cfrac{TP}{TP + FP} = \cfrac{1,000}{1,000 + 700} = 0.59$.
+   - Recall (the proportion of actual conversions that were correctly identified) is $\cfrac{TP}{TP + FN} = \cfrac{1,000}{1,000 + 500} = 0.67$.
+3. **F1/F2 Scores**: These scores balance precision and recall, with the F1 score providing a harmonic mean and the F2 score weighting recall higher than precision. These are more suitable metrics when dealing with imbalanced datasets.
+
+### How do you evaluate whether a model is underfitting or overfitting?
+
+A way to evaluate if a model has underfitted or overfitted is to look at the model's error curves on train and validation datasets as seen below. Consider the number of trees (iterations) sequentially constructed in the XGBoost model. As iterations increase, the error of both train and validatino are in a downward trajectory. This is an indication that the model has underfitted and there's still room to identify the optimal fit.
+
+But, as the iterations increase beyond the optimal fit, the validation error increases while the train error decreases. This is sign that the model is overfitting on the the training data. And, this is a sign that the iterations need to be cut-back, or some other regularisation methods (e.g. L1/L2 term, column and row samples) should be considered to reduce overfitting.
+
+<img src="https://files.cdn.thinkific.com/file_uploads/481328/images/1f9/ba7/ad9/Model_Training.png?width=1920&dpr=2" width=500 align=center />
+
+### How do you conduct features selection when building models?
+
+To conduct features selection for machine learning, here are couple of key points to consider:
+
+#### Types of Feature Selection
+
+1. **Filter Methods** - Assess individual features based on their statistical relationship to the target variable, independent of the chosen model.
+   - Methods: 
+     - Correlation analysis: calculate correlation coeeficients (Pearson, Spearman, etc) to identify strong linear or monotonic relationships
+     - Information Gain, Mutual Information: measures how much information a feature provides about the target
+     - Chi-Sqaure test: evaluate the independence between a feature and the target variable (for categorical data)
+     - Variance Threshold: Remove features with low variance (i.e., that barely change)
+   - Pros: Fase, model-agnostic, good for inital screening
+   - Cons: Might miss features that only become important when combined with others
+2. **Wrapper Methods** - Use a machine learning model itself to evaluate the importance of features by iteratively adding and removing them.
+   - Methods:
+     - Recursive Features Elimination (RFE): fit a model, rank feature importance, recursively elimiate the least important features
+     - Forward selection: start with no features; iteratively add the most impactful ones
+     - Backward elimination: start with all features, iteratively remove the least useful ones
+   - Pros: take feature interactions into account, can lead to better performing models
+   - Cons: computationally expensive, risk of overfitting to the specific model
+3. **Embedded Methods** - Feature selection is built directly into the learning algorithms
+   - Methods:
+     - L1 Regularisation (Lasso): adds a penalty term to the model that forces coefficients of less important features towards zero.
+     - Decision Trees and Random Forests: these algorithms inherentely provide feature importance scores
+   - Pros: efficient, integrated into the modelling process. In addition, the regularisation approach can help reduce multi-collinearity in the features
+   - Cons: Specific to the type of model used
+4. **Dimensionality Reduction** - Reduce the dimensions of the feature space using dimensionality reduction methods like PCA, ICA, and autoencoder
+   - Methods:
+     - Principal Component Analysis (PCA): projects the data into a lower-dimensional space while retaining the most important information
+     - Independent Component Analysis (ICA): separates a multivariate signal into additive, independent components
+     - Autoencoder: a neural network that learns to compress and then reconstruct the data
+   - Procs: PCA/ICA are easy to implement in capturing the lower dimensional representation of the intial data. This can prevent overfitting
+   - Cons: Loses the interpretability of the feature data as the model trains on the output of the diemensionality reduction models
+
+#### Choosing the right techniques
+
+Consider these factors when deciding on feature selection methods:
+- **Dataset Size**: Filter methods are generally faster, suitable for large datasets. Wrapper methods might be too computationally expensive for very high-dimensional problems
+- **Model Type**: Embedded methods are often convenient if your primary model choice is already something like a decision tree or a penalised regression model
+- **Goal**: If your goal is primarily to understand the most important features, filter or embedded methods are good starting points. If maximising predictive performance is the priority, wrapper methods might yield better results
+- **Risk of Overfitting**: Wrapper methods require more careful cross-validation strategies to avoid overfitting
+
+#### Additional Tips
+
+- **Domain knowledge**: incorporate your understanding of the problem to guide feature selection
+- **Remove highly correlcted features**: identify and potentially remove features that are essentially duplidates of each other
+- **Iteration**: Feature selection is often an iterative process; try different methods and evaluate their impact
 
 ## Machine Learning Algorithm
 

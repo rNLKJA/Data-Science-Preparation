@@ -81,6 +81,8 @@ I bring a comprehensive skill set that combines technical expertise, research ac
 
 | Date | Topic | Resources Used | 
 |------|-------|----------------|
+| 28-Aug-2024 | Machine Learning | Overfitting & Underfitting |
+| 28-Aug-2024 | Machine Learning | Evaluation Metrics |
 | 27-Aug-2024 | Machine Learning | Explain AUC |
 | 27-Aug-2024 | Machine Learning | Curse of Dimensionality |
 | 25-Aug-2024 | Machine Learning | Imbalanced labels | 
