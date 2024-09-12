@@ -81,6 +81,10 @@ I bring a comprehensive skill set that combines technical expertise, research ac
 
 | Date | Topic | Resources Used | 
 |------|-------|----------------|
+| 05-Sep-2024 | Machine Learning | Hyperparameter Tuning |
+| 05-Sep-2024 | Machine Learning | Regression Model Metrics |
+| 05-Sep-2024 | Machine Learning | Handling Missing Values |
+| 28-Aug-2024 | Machine Learning | Euclidean and Manhattan Distance |
 | 28-Aug-2024 | Machine Learning | Overfitting & Underfitting |
 | 28-Aug-2024 | Machine Learning | Evaluation Metrics |
 | 27-Aug-2024 | Machine Learning | Explain AUC |
@@ -104,3 +108,4 @@ For more details about my experience and projects, please visit my [LinkedIn](ht
   <a href="https://www.linkedin.com/in/sunchuangyuhuang/" target="_blank">LinkedIn</a> | 
   <a href="mailto:huang@rin.contact">Email</a>
 </p>
+

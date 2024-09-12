@@ -29,6 +29,12 @@ This section covers concepts, techniques, and applications of machine learning f
       - [Types of Feature Selection](#types-of-feature-selection)
       - [Choosing the right techniques](#choosing-the-right-techniques)
       - [Additional Tips](#additional-tips)
+    - [What are the difference between Euclidean and Manhattan distances?](#what-are-the-difference-between-euclidean-and-manhattan-distances)
+      - [Euclidean Distance](#euclidean-distance)
+      - [Manhattan Distance](#manhattan-distance)
+    - [How do you handle missing values in data when building models](#how-do-you-handle-missing-values-in-data-when-building-models)
+    - [How do you evaluate regression model metrics?](#how-do-you-evaluate-regression-model-metrics)
+    - [How do you conduct hyperparameter tuning?](#how-do-you-conduct-hyperparameter-tuning)
   - [Machine Learning Algorithm](#machine-learning-algorithm)
   - [Deep Learning](#deep-learning)
   - [Machine Learning Prediction](#machine-learning-prediction)
@@ -326,6 +332,138 @@ Consider these factors when deciding on feature selection methods:
 - **Domain knowledge**: incorporate your understanding of the problem to guide feature selection
 - **Remove highly correlcted features**: identify and potentially remove features that are essentially duplidates of each other
 - **Iteration**: Feature selection is often an iterative process; try different methods and evaluate their impact
+
+### What are the difference between Euclidean and Manhattan distances?
+
+Euclidean and Manhattan distances are two common metrics used to measure the distance between two points in a space. These measures are often used in algorithms that rely on distance calculations, such as k-nearest neighbors (k-NN) and clustering algorithms. Additionally, these measures are used in recommender systems (e.g. collaborative filtering) and anomaly detection.
+
+#### Euclidean Distance
+
+Euclidean distance is the straight-line distance between two points in Euclidean space. It is the most common use of distance in geometry and can be generalised to multiple dimensions. The calculation is shown below. It's the square root of the sums of the squared difference between each component in a pair two vectors:
+
+$$
+\text{Euclidean Distance}(x,y) = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}
+$$
+
+The problem with euclidean distance is that is sensitive to outliers given that one of the dimension may produce a large difference, which may inflate the overall calculation of the Euclidean distance value.
+
+#### Manhattan Distance
+
+Manhattan distance is the sum of the absolute differences between the coordinates of two points. It is named after the grid-like layout of Manhattan streets, where the distance between two points is the sum of the horizontal and vertical distances. The calculation is shown below:
+
+$$
+\text{Manhattan Distance}(x,y) = \sum_{i=1}^{n}|x_i - y_i|
+$$
+
+### How do you handle missing values in data when building models
+
+Handling missing values is a crucial part of data preparation for machine learning. Here's a breakdown of the most common techniques, along with considerations on when to use them:
+
+1. Deletion
+   - Method:
+     - Row deletion: Remove rows with missing values
+     - Column deletion: Remove columns with missing values
+   - When to use:
+     - When a substantial percentage of your data is missing
+     - When missingness is completely random (not correlated with other features or the target variable)
+   - Risk: significant loss of information, potential introduction of bias if missingness isn't random
+2. Imputation
+   - Methods:
+     - Mean/Median/Mode Imputation: Replace missing values with the mean (for continuous variables) or median (for continuous or ordinal variables) or the feature
+     - Mode Inputation: Replace missing values with the most frequent value in the column
+     - Predictive Modelling: Create a model (e.g., KNN) to predict the missing values based on other features
+   - When to use:
+     - To preserve the sample size
+     - When you have some understanding of the underlying distribution of the features or relationship between them
+   - Risks:
+     - Imputed values are estimations, potentially reducing the vairance in your data
+     - Simple imputation (mean/median) can distort the data's distribution
+3. Treat Missing Values as Unique Category
+   - Methods:
+     - Create a new cateogy "missing" for categorical features
+     - For numerical features, sometimes a special value (e.g., -999) can indicate missingness
+   - When to use:
+     - When missingness itself might hold predictive information
+   - Risk:
+     - Carefully consider if it makes sense in the context of your problem
+   
+Choosing the right technique depends on the specific context and the nature of the data. Here are some factors to consider:
+1. Understand the source of the missingness. First, identify whether the missingness is generated from a data pipeline issue, or that it is an field that is optional, deprecated, or created.
+2. Measure the proportion of missing values. If the proportion of missing values is high, this may necessitate removal of the column as it would carry low predictive power for the model. If it's moderate amount, then consider strategies such as imputation or replacement as a unique category.
+3. Test different strategies. Ultimately, the best strategy for the missingness depends on the model performance. Measure the baseline performance. Iterate through the model building process with different missing value handling approaches.
+
+### How do you evaluate regression model metrics?
+
+1. **Mean Squared Error (MSE)**: Calculates the average squared difference between the actual values ($y_i$) and the predicted value $\hat y_i$ for all samples. Lower MSE indicates a better fit. But MSE is sensitive to outliers given the squaring errors amplifies the differences.
+
+$$
+\text{Mean Squared Error} = \cfrac{1}{N}(y_i - \hat y_i)^2
+$$
+where:
+- $y_i$ is the actual value
+- $\hat y_i$ is the predicted value
+- $N$ is the number of samples
+
+2. **Root Mean Squared Error (RMSE)**: The square root of the MSE, providing an error metric in the same units as the target variable.
+
+$$
+\text{Root Mean Squared Error} = \sqrt{\cfrac{1}{N}(y_i - \hat y_i)^2}
+$$
+
+3. **Mean Absolute Error (MAE)**: Calculates the average absolute difference between the actual values ($y_i$) and the predicted value $\hat y_i$ for all samples. MAE is less sensitive to outliers than MSE.
+
+$$
+\text{Mean Absolute Error} = \cfrac{1}{N}|y_i - \hat y_i|
+$$
+
+4. **R-squared (R²)**: Measures the proportion of variance in the target variable that is explained by the model. R² ranges from 0 to 1, with 1 indicating a perfect fit.
+
+$$
+R^2 = 1 - \cfrac{\text{SSR}}{\text{SST}}
+$$
+where:
+- SSR is the sum of squared residuals
+- SST is the total sum of squares
+
+5. **Adjusted R-squared**: A modified version of R² that penalizes for the number of features in the model. Useful when comparing models with different numbers of features.
+
+$$
+\text{Adjusted } R^2 = 1 - \cfrac{SSR / (N - p - 1)}{SST / (N - 1)}
+$$
+where:
+- N is the number of samples
+- p is the number of features
+
+**Choosing the Right Metrics**
+
+The choice of metrics depends on several factors:
+- **Problem Context**: If the absolute magnitude of errors is crucial (e.g., predicting financial losses), MAE might be better. If understanding the proportion of variance explained is important, $R^2$ is a good choice.
+- **Outliers**: If your data has outliers, MAE often more robust than MSE and RMSE
+- **Scale of the target variable**: metrics like MSE and RMSE are affected by the scale of your target variable. Consider normalisation if the scale is significantly different from the range of predicted values.
+
+### How do you conduct hyperparameter tuning?
+
+Hyperparameter tuning is the process of finding the optimal settings for a machine learning model's hyperparameters. Here are three common techniques for hyperparameter tuning:
+
+<img src="https://files.cdn.thinkific.com/file_uploads/481328/images/a39/732/7d2/Screen_Shot_2024-04-17_at_10.08.16_AM.png?width=1920&dpr=2" align=center />
+
+1. **Grid Search**:
+   - **Concept**: grid search evaluates a model's performance on a predefined grid of hyperparameters values. This grid is created by specifying a range and a number of steps for each hyperparameter.
+   - **Exhaustive Search**: It tries every single combination of hyperparameter values within the defined grid. This can be computationally expensive, especially for models with many hyperparameters.
+   - **Finding the Best**: The combination that yields the best performance metric (e.g. accuracy, F1-score) on a validation set is considered the optimal hyperparameter configuration
+2. **Random Search**:
+   - **Concept**: Similar to grid search, random search also evaluates a model on different hyperparameter combinations. However, instead of an exhaustive grid, it randomly samples values from predefined ranges for each hyperparameter.
+   - **More efficient**: Random search is often more computationally efficient than grid search, especially for large hyperparameter spaces. It avoids evaluating unnecessary combinations that might occur in grid search.
+   - **Stochastic approach**: although random, it ensures each hyperparameter value has a chance of being selected, preventing biases towards specific regions of the search space.
+3. **Bayesian Optimization**:
+   - **Concept**: Bayesian optimisation is a more sophisticated approach that uses a probabilitic model to guide the search for optimal hyperparameters. It iteratively selects the most promising hyperparameter combinations to evaluate based on past evaluations and a statistical model of the objective function (e.g., loss function)
+   - **Intelligent Search**: It prioritises regions of the search space that are more likely to contain good hyperparameter combinations based on past evaluations. This makes it efficient, especially when dealing with expensive-to-evaluate models
+   - **Requires More Setup**: Compared to grid search and random search, it requires more initial setup to define the statistical model and the acquisition function used to select the next hyperparameter configuration
+
+**Choosing the Right Technique**
+- **Grid Search**: Simple and effective, especially for smaller hyperparameter spaces. It's a good default for hyperparameter tuning.
+- **Random Search**: A stronger alternative to grid search for larger hyperparameter spaces. It's more computationally efficient and less prone to getting stuck in local optima.
+- **Bayesian Optimization**: Best for large, complex hyperparameter spaces where other methods are computationally infeasible. It's particularly useful when dealing with expensive-to-evaluate models or when trying to optimise complex non-convex objective functions.
 
 ## Machine Learning Algorithm
 
