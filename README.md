@@ -1,115 +1,100 @@
+<div align="center">
+
 # Data Science Preparation
 
-Welcome to my Data Science Preparation repository! This space is dedicated to tracking my journey through the data science job market, refreshing my knowledge, and preparing for interviews. It's also a testament to the persistence required in this competitive field.
+A personal, growing set of notes for refreshing core data science knowledge and preparing for interviews.
 
-> As of 23-Aug-2024, I've applied to over 100 jobs and secured 2 interviews. While the 2% conversion rate is challenging, I remain committed to improving and showcasing my skills.
+[![Markdown](https://img.shields.io/badge/Markdown-notes-000000?logo=markdown&logoColor=white)](https://www.markdownguide.org/)
+[![Topic](https://img.shields.io/badge/topic-data--science-blue)](#topic-index)
+[![Status](https://img.shields.io/badge/status-early--stage-orange)](#progress-tracker)
+[![Maintained](https://img.shields.io/badge/maintained-yes-brightgreen)](#progress-tracker)
 
-## Table of Contents
+</div>
 
-- [Data Science Preparation](#data-science-preparation)
-  - [Table of Contents](#table-of-contents)
-  - [About Me](#about-me)
-  - [Topic Index](#topic-index)
-  - [Progress Tracker](#progress-tracker)
+## Overview
 
-## About Me
+This repository tracks my journey through the data science job market: refreshing fundamentals, working through interview questions, and keeping a record of what I study and when. It started as a way to stay honest about progress during a long job search, and it has grown into a study log I can revise from.
 
-Hello! I'm Rin (Sunchuangyu) Huang, a versatile **Data Scientist** with a Master's degree from the University of Melbourne. My journey in data science blends **full-stack development** skills with expertise in **statistical modeling** and **machine learning**.
+It is an early-stage notes repository. A few topics have detailed write-ups, while many are still placeholders waiting to be filled in. The progress tracker at the bottom is the source of truth for what has actually been covered.
 
-I stand out due to my proficiency in **Python**, **SQL**, and **R** for advanced analysis and modeling. My experience in **cloud computing** and **High-Performance Computing (HPC)** enables me to efficiently tackle complex computational challenges, including processing **large-scale datasets** (>60GB).
+> As of 23 August 2024, I had applied to more than 100 roles and secured two interviews. The conversion rate was tough, but the point of this repo is to keep learning and keep showing up.
 
-My background spans both **academic research** and **industry applications**, allowing me to bridge theoretical concepts with practical implementations. Throughout my career, I've consistently improved efficiency and accuracy in various projects, demonstrating my ability to deliver tangible results.
+## Highlights
 
-My skill set covers critical areas of modern data science:
-
-- **Data Analysis & Visualization**: Transforming raw data into actionable insights
-- **Machine Learning & AI**: Developing sophisticated models for prediction and decision-making
-- **Full-Stack Development**: Building end-to-end solutions from data pipelines to user interfaces
-- **Cloud Computing & Big Data**: Designing scalable solutions for massive datasets
-- **Research & Scientific Computing**: Applying rigorous methodology to complex problems
-- **Project Management**: Leading teams and projects to successful completion
-
-I bring a comprehensive skill set that combines technical expertise, research acumen, and practical industry experience. This unique blend equips me to drive innovation and deliver value in any data science role, whether it's developing cutting-edge algorithms, managing large-scale data infrastructures, or translating complex findings into business strategies.
+- **Interview-focused notes.** The [Machine Learning](./Machine%20Learning/) section works through common interview questions: bias-variance trade-off, cross-validation, imbalanced labels, the curse of dimensionality, model evaluation metrics, feature selection, and hyperparameter tuning, with the maths written out where it helps.
+- **Certificate study logs.** The [Google Cybersecurity](./Google%20Cybersecurity/) folder follows the eight-course certificate, with foundations notes written up in full.
+- **Infrastructure basics.** The [Kubernetes](./Kubernets/) notes cover the history of deployment eras and the core control-plane and data-plane components.
+- **A running progress tracker.** Every study session gets a dated row, so the log reflects real effort rather than intentions.
 
 ## Topic Index
 
-**Core Data Science**
+Sections with notes written so far:
 
-- [Machine Learning](./Machine%20Learning/)
-- [Deep Learning](./Deep%20Learning/)
-- [Applied Statistics](./Applied%20Statistics/)
-- [Data Structures & Algorithms](./Data%20Structures%20&%20Algorithms/)
+- [Machine Learning](./Machine%20Learning/) — interview questions and worked answers
+- [Google Cybersecurity](./Google%20Cybersecurity/) — certificate course notes
+- [Kubernetes](./Kubernets/) — history and core components
 
-**Advanced Machine Learning**
+Planned topics (folders scaffolded, notes to come): Applied Statistics, Data Structures & Algorithms, Machine Learning System Design, Natural Language Processing, Time Series Analysis, Sequence Models, Causal Inference, AB Testing, Big Data Technologies, SQL & Database Management, AWS Cloud Computing, DevOps, and Product Sense.
 
-- [Machine Learning System Design](./Machine%20Learning%20System%20Design/)
-- [Natural Language Processing](./Natural%20Language%20Processing/)
-- [Time Series Analysis](./Time%20Series%20Analysis/)
-- [Sequence Models](./Sequence%20Models/)
-- [Reinforcement Learning](./Reinforcement%20Learning/)
+## Tech Stack
 
-**Statistical Methods and Analysis**
+This is a notes repository, so the "stack" is the toolset the notes cover and the format they are written in.
 
-- [Causal Inference](./Causal%20Inference/)
-- [AB Testing](./AB%20Testing/)
-- [Experimental Design](./Experimental%20Design/)
+| Area                     | What it covers                                                      |
+| ------------------------ | ------------------------------------------------------------------- |
+| Format                   | Markdown, with LaTeX maths and embedded diagrams                    |
+| Languages studied        | Python, SQL, R                                                      |
+| Machine learning         | scikit-learn concepts, XGBoost, model evaluation, feature selection |
+| Cloud and infrastructure | AWS, Kubernetes, DevOps fundamentals                                |
+| Security                 | Google Cybersecurity certificate material                           |
 
-**Data Engineering**
+## Getting Started
 
-- [Big Data Technologies](./Big%20Data%20Technologies/)
-- [Data Pipelines and ETL](./Data%20Pipelines/)
-- [SQL & Database Management](./SQL%20&%20Database%20Management/)
+No build step is needed. The notes are plain Markdown and read best on GitHub or in any Markdown viewer.
 
-**Cloud and DevOps**
+### Prerequisites
 
-- [AWS Cloud Computing](./AWS%20Cloud%20Computing/)
-- [Kubernetes](./Kubernetes/)
-- [DevOps](./DevOps/)
+- A Markdown viewer (GitHub renders everything, including the LaTeX maths blocks).
 
-**Data Analysis and Business Intelligence**
+### Read the notes
 
-- [Storytelling with Data](./Storytelling%20with%20Data/)
-- [Product Sense](./Product%20Sense/)
-- [Business Intelligence](./Business%20Intelligence/)
+```bash
+git clone https://github.com/rNLKJA/Data-Science-Preparation.git
+cd Data-Science-Preparation
+```
 
-**Advanced Data Science Concepts**
-
-- [Feature Engineering](./Feature%20Engineering/)
-- [Model Interpretability and Explainable AI](./Model%20Interpretability/)
-
-**Ethics and Compliance**
-
-- [Ethics in AI and Data Science](./Ethics%20in%20AI/)
-- [Data Privacy and Security](./Data%20Privacy/)
+Then open any folder's `README.md` or note file. A good place to start is [`Machine Learning/README.md`](./Machine%20Learning/).
 
 ## Progress Tracker
 
-| Date        | Topic                  | Resources Used                   |
+| Date        | Topic                  | Focus                            |
 | ----------- | ---------------------- | -------------------------------- |
-| 05-Sep-2024 | Machine Learning       | Hyperparameter Tuning            |
-| 05-Sep-2024 | Machine Learning       | Regression Model Metrics         |
-| 05-Sep-2024 | Machine Learning       | Handling Missing Values          |
-| 28-Aug-2024 | Machine Learning       | Euclidean and Manhattan Distance |
-| 28-Aug-2024 | Machine Learning       | Overfitting & Underfitting       |
-| 28-Aug-2024 | Machine Learning       | Evaluation Metrics               |
-| 27-Aug-2024 | Machine Learning       | Explain AUC                      |
-| 27-Aug-2024 | Machine Learning       | Curse of Dimensionality          |
-| 25-Aug-2024 | Machine Learning       | Imbalanced labels                |
-| 25-Aug-2024 | Machine Learning       | Multicollinearity                |
-| 25-Aug-2024 | Machine Learning       | Cross-validation                 |
-| 24-Aug-2024 | Storytelling with Data | Let's practice 1.9, 1.10         |
-| 24-Aug-2024 | Google Cyberseucrity   | Foundation model 1               |
-| 23-Aug-2024 | Kubernets              | History & Technology Overview    |
-| 23-Aug-2024 | Machine Learning       | Bias-Variance Trade-off          |
+| 05 Sep 2024 | Machine Learning       | Hyperparameter tuning            |
+| 05 Sep 2024 | Machine Learning       | Regression model metrics         |
+| 05 Sep 2024 | Machine Learning       | Handling missing values          |
+| 28 Aug 2024 | Machine Learning       | Euclidean and Manhattan distance |
+| 28 Aug 2024 | Machine Learning       | Overfitting and underfitting     |
+| 28 Aug 2024 | Machine Learning       | Evaluation metrics               |
+| 27 Aug 2024 | Machine Learning       | Explaining AUC                   |
+| 27 Aug 2024 | Machine Learning       | Curse of dimensionality          |
+| 25 Aug 2024 | Machine Learning       | Imbalanced labels                |
+| 25 Aug 2024 | Machine Learning       | Multicollinearity                |
+| 25 Aug 2024 | Machine Learning       | Cross-validation                 |
+| 24 Aug 2024 | Storytelling with Data | Practice exercises 1.9, 1.10     |
+| 24 Aug 2024 | Google Cybersecurity   | Foundations module 1             |
+| 23 Aug 2024 | Kubernetes             | History and technology overview  |
+| 23 Aug 2024 | Machine Learning       | Bias-variance trade-off          |
 
----
+## About Me
 
-For more details about my experience and projects, please visit my [LinkedIn](https://www.linkedin.com/in/sunchuangyuhuang/) or [GitHub](https://github.com/YourGitHubUsername).
+I'm Rin (Sunchuangyu) Huang, a data scientist with a Master's degree from the University of Melbourne. My work blends full-stack development with statistical modelling and machine learning. I work mainly in Python, SQL, and R, and I have hands-on experience with cloud computing and High-Performance Computing (HPC), including processing datasets larger than 60 GB.
+
+My background spans academic research and industry projects, which helps me connect the theory to something that actually ships.
 
 ---
 
 <p align="right">
-  Rin / Sunchuangyu Huang | 
-  <a href="https://www.linkedin.com/in/sunchuangyuhuang/" target="_blank">LinkedIn</a> | 
+  Rin / Sunchuangyu Huang |
+  <a href="https://www.linkedin.com/in/sunchuangyuhuang/" target="_blank">LinkedIn</a> |
   <a href="mailto:huang@rin.contact">Email</a>
 </p>
