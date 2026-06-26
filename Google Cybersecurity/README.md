@@ -1,6 +1,6 @@
 # Google Cybersecurity Certificate courses
 
-The Google Cybersecurity Certificate has eight courses that focus and build upon core concepts and skills related to the daily work of cybersecurity professionals, including foundational cybersecurity models and frameworks that are used to mitigate risk; protecting networks and data; using programming to automate tasks; identifying and responding to security incidents; and communicating and collaborating with stakeholders. Additionally, you will apply what you’ve learned in each course by completing portfolio projects that can be used to showcase your understanding of essential cybersecurity concepts to potential employers. The courses of the program are as follows: 
+The Google Cybersecurity Certificate has eight courses that focus and build upon core concepts and skills related to the daily work of cybersecurity professionals, including foundational cybersecurity models and frameworks that are used to mitigate risk; protecting networks and data; using programming to automate tasks; identifying and responding to security incidents; and communicating and collaborating with stakeholders. Additionally, you will apply what you’ve learned in each course by completing portfolio projects that can be used to showcase your understanding of essential cybersecurity concepts to potential employers. The courses of the program are as follows:
 
 1. [Foundations of Cybersecurity](./Foundations%20of%20Cybersecurity.md)
 2. [Play it Safe: Manage Security Risks](./Manage%20Security%20Risks.md)

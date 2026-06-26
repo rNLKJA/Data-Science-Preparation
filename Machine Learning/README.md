@@ -1,4 +1,4 @@
-# Machine Learning 
+# Machine Learning
 
 This section covers concepts, techniques, and applications of machine learning for interviews, projects, and research.
 
@@ -46,19 +46,22 @@ This section covers concepts, techniques, and applications of machine learning f
 The variance-bias trade-off is a fundamental concept in machine learning, which assesses how well a model has fitted the data for predictions. There are two properties - variance and bias - that assess model fits. And, there's a trade-off between the two such that an increase in one decreases the other. And, the main for machine learning algorithms and various techniques (e.g. ensembling and regularization) is to find the optimal balance between the two.
 
 Let's consider the meaning of bias and variance:
+
 - **Bias**: is the difference between the average prediction of your model and the true value you are trying to predict. High bias means your model is overly simplistic. It has strong assumptions about the data which prevents it from learning the real underlying patterns. This leads to underfitting.
 - **Variance**: measures how much your model's prediction change with different training datasets. High variance means the model is highly sensitive to the specific data it's trained on, capturing noise and peculiarities rather than the generlisable trend. This leads to overfitting.
 
 **The Trade-off**
+
 - **Complex Models**: flexible models (like polynomial linear models, deep neural networks, decision trees with many splits) have the capabcity to fit complex patterns in the data. This is reduces bias but can lead to high variance if they start fitting the noise in the training data rather than the true underlying trend.
 - **Simple Models**: linear models or shallow decision trees have bias because of their simplicity assumptions. However, they are less prone to overfitting and tend to have lower variance.
 
 **Tehcniques to Address the Trade-off**
+
 - **Regularisation**: adds penalities to complex models to favor simpler explanations (e.g. L1/L2 regularsation).
 - **Hyper-parameter Tuning using Cross-Validation**: Helps evaluate the best combination of parameters from multiple splits of data and produce the optimal complexity in decision boundary that minimise both variance and bias.
 - **Ensembling Methods**: Combines multiple models to reduce variance (e.g., bagging, random forests).
 
-### What is cross-validation? 
+### What is cross-validation?
 
 Suppose that you randomly sample and allocate 70% of your data for training the model and the remaining 30% of the data for testing your model. Let's also assume that the prediction problem is regression so mean square error (MSE) is used to evaluate the model. You compute the MSE of the model prediction on testing data and conclude 678.34.
 
@@ -75,6 +78,7 @@ Finally, the errors are averaged to produce a single error score with reduced un
 #### CV AUC is 0.90. However, when the model is productionsed, AUC drops to 0.75. Why?
 
 The discrepency in a model performance offline vs. online happens when a holdout test wasn't utilised to measure the model performance. Cross-validation will work well when the observations in the data are independent, meaning that the past observation does not influence the future. However, in many modelling exercises, observations are usually autocorrelated, i.e.:
+
 1. a fraud user previously banned will re-appear with a new account and new behaviors to avoid detection
 2. an online shopper will change spending patterns over time
 
@@ -93,11 +97,13 @@ No,cross-validation is not designed to improve model performance. It's designed 
 To begin answering this question, let's first provide explanation of the definition of multicolinearity. Multicollinearity is the presence of two or more correlated features in a model. The best practice in building a high-predictive, interpretable machine learning models is to remove multicollinearity.
 
 Multicollinearity can harm:
+
 1. The predictve performance of a model because of overfitting
 2. The interpretability of the model such that the variable importance of a feature correlating which author would be inaccurate
 3. The maintainability of large correlated features in a production environment
 
 Now, let's address the interviewer's question to treating multicollinearity in a model. You can list techniques:
+
 1. Use Pearson and Spearman correlations to identify correlated variables. Use Pearson correlation of the relationship between two variables is linear. If not, use Spearman.
 2. Employ variance inflation factor (VIC) to identify correlated variables in a regression model
 3. Apply the wrapper method such as backward, forward, or stepwise to build a model that uses a feature set with a low presense of multicollinearity
@@ -119,6 +125,7 @@ Always relate back to the problem which is credit fraud. Just simply listing tec
 This solution will cover popular tecniques and lightly touch the theory behind how each techniques works. There are depths of statisical underpinning on why the techniques work and when those fail, but this guide should provide a guide on how to respond to the interwer's question.
 
 Common techniques include:
+
 1. choosing the right criterion to measure model performance (e.g. AUC, F1 score, precision, recall)
 2. resampling techniques to balance the class (e.g. oversampling, undersampling, SMOTE)
 3. applying cost-sensitive learning to penalise the model for misclassifying the minority class
@@ -127,7 +134,7 @@ Before exploring each technique, let's add sturcture to the context that the int
 
 #### Best Practice #1: Choose the right metric for evaluating model performance.
 
-Do not use accuracy, which is 
+Do not use accuracy, which is
 
 $$
 \text{Accuracy} = \cfrac{\text{True Positive} + \text{True Negative}}{\text{True Positive} + \text{True Negative} + \text{False Positive} + \text{False Negative}}
@@ -135,10 +142,10 @@ $$
 
 The class distribution is heavily skewed toward the good population (negatives). When your model yields the following result below, based on accuracy, the model performance is 95%.
 
-| | True | False |
-| -- | -- | -- |
-| Pred True | 1,200 | 0 |
-| Pred False | 10,800 | 2,280,000 | 
+|            | True   | False     |
+| ---------- | ------ | --------- |
+| Pred True  | 1,200  | 0         |
+| Pred False | 10,800 | 2,280,000 |
 
 $$
 \text{Accuracy} = \cfrac{1,200 + 2,280,000}{1,200 + 0 + 10,800 + 2,280,000} = 95\%
@@ -196,16 +203,16 @@ With a similarity objective in mind, oversampling of miniority class can also be
 
 In credit fraud modelling, there are two types of decisions and four types of outcomes. In terms of decisions, the model labels them as fraud or non-fraud. But, based on the actual label, there are four outcomes each associated with its own cost:
 
-| | Fraud | Non-Fraud |
-| -- | -- | -- |
-| Pred Fraud | c(1,1) | c(1,0) |
-| Pred Non-Fraud | c(0,1) | c(0,0) |
+|                | Fraud  | Non-Fraud |
+| -------------- | ------ | --------- |
+| Pred Fraud     | c(1,1) | c(1,0)    |
+| Pred Non-Fraud | c(0,1) | c(0,0)    |
 
 There is a multitude of cost-sensitive learning. One main type you should be aware of is cost-sensitive learning with respect to threshold determination.
 
 When class is highly imbalanced, you never want to choose 0.5 as the threshold for predicting class as fraud. Some measure incorporating cost is required.
 
-C(1,0) is the cost of false positive (FP) while C(0,1) is the cost of false negative (FN). You can determine your threshold, P*, based on the following:
+C(1,0) is the cost of false positive (FP) while C(0,1) is the cost of false negative (FN). You can determine your threshold, P\*, based on the following:
 
 $$
 \cfrac{\text{False Positve}}{\text{False Negative} + \text{False Positive}} = P^*
@@ -226,13 +233,14 @@ As the data points become less clustered and sparse, the decision boundary begin
 #### How to you mitigate curse of dimensionality?
 
 The following methods can handle curse of dimensionality:
+
 - **Dimensionality Reduction**: Techniques like PCA to project data into lower dimensions
 - **Features Selection**: Identify the most important features and dropping the rest
 - **Reguarlisation Parameters**: Every common ML algorihtms contain parameters that mitigate against overfitting.
   - Decision Tree-Pruning
   - Random Forest - Bootstrap, Number of Trees, Column and Row Sample
   - XGBoost - Bootstrap, Column and Row Sample, L1/L2 Regularisation Term
-  - Neural Network - Dropout, L1/L2 Regularisation Term 
+  - Neural Network - Dropout, L1/L2 Regularisation Term
 
 ### What is AUC? How is it helpful when labels are imbalanced?
 
@@ -266,10 +274,12 @@ For an imbalanced dataset like this, where the number of conversions is much sma
 - Total users who visited the sales page: 10,000
 
 Now we calcuate the missing components for our evaluation:
+
 - True Negatives (TN), those who were not predicted to buy and did not buy: This is derived as the total number of users minus True Positives, False Positives, and False Negatives, which is 10,000 - 1,000 - 700 - 1,500 = 6,800.
 - False Negatives (FN), those who made a purchase but were not predicted as buyers: This is the total number of actual conversions minus True Positives, which is 1,500 - 1,000 = 500.
 
 Given these calculations, we can now discuss the model's performance using various metrics:
+
 1. **Accuracy**: Calcuated as $\cfrac{TP + TN}{TP + TN + FP + FN} = \cfrac{1,000 + 6,800}{1,000 + 6,800 + 700 + 500} = 0.78$. However, accuracy can be misleading in cases of imbalanced classes, such as when the number of conversions is significantly less than non-conversions.
 2. **Prediction and Recall**: These metrics offer a more nuanced view of the model's performance.
    - Precision (the proportion of predicted conversions that were correct) is calculated as $\cfrac{TP}{TP + FP} = \cfrac{1,000}{1,000 + 700} = 0.59$.
@@ -291,7 +301,7 @@ To conduct features selection for machine learning, here are couple of key point
 #### Types of Feature Selection
 
 1. **Filter Methods** - Assess individual features based on their statistical relationship to the target variable, independent of the chosen model.
-   - Methods: 
+   - Methods:
      - Correlation analysis: calculate correlation coeeficients (Pearson, Spearman, etc) to identify strong linear or monotonic relationships
      - Information Gain, Mutual Information: measures how much information a feature provides about the target
      - Chi-Sqaure test: evaluate the independence between a feature and the target variable (for categorical data)
@@ -322,6 +332,7 @@ To conduct features selection for machine learning, here are couple of key point
 #### Choosing the right techniques
 
 Consider these factors when deciding on feature selection methods:
+
 - **Dataset Size**: Filter methods are generally faster, suitable for large datasets. Wrapper methods might be too computationally expensive for very high-dimensional problems
 - **Model Type**: Embedded methods are often convenient if your primary model choice is already something like a decision tree or a penalised regression model
 - **Goal**: If your goal is primarily to understand the most important features, filter or embedded methods are good starting points. If maximising predictive performance is the priority, wrapper methods might yield better results
@@ -386,8 +397,9 @@ Handling missing values is a crucial part of data preparation for machine learni
      - When missingness itself might hold predictive information
    - Risk:
      - Carefully consider if it makes sense in the context of your problem
-   
+
 Choosing the right technique depends on the specific context and the nature of the data. Here are some factors to consider:
+
 1. Understand the source of the missingness. First, identify whether the missingness is generated from a data pipeline issue, or that it is an field that is optional, deprecated, or created.
 2. Measure the proportion of missing values. If the proportion of missing values is high, this may necessitate removal of the column as it would carry low predictive power for the model. If it's moderate amount, then consider strategies such as imputation or replacement as a unique category.
 3. Test different strategies. Ultimately, the best strategy for the missingness depends on the model performance. Measure the baseline performance. Iterate through the model building process with different missing value handling approaches.
@@ -399,7 +411,9 @@ Choosing the right technique depends on the specific context and the nature of t
 $$
 \text{Mean Squared Error} = \cfrac{1}{N}(y_i - \hat y_i)^2
 $$
+
 where:
+
 - $y_i$ is the actual value
 - $\hat y_i$ is the predicted value
 - $N$ is the number of samples
@@ -421,7 +435,9 @@ $$
 $$
 R^2 = 1 - \cfrac{\text{SSR}}{\text{SST}}
 $$
+
 where:
+
 - SSR is the sum of squared residuals
 - SST is the total sum of squares
 
@@ -430,13 +446,16 @@ where:
 $$
 \text{Adjusted } R^2 = 1 - \cfrac{SSR / (N - p - 1)}{SST / (N - 1)}
 $$
+
 where:
+
 - N is the number of samples
 - p is the number of features
 
 **Choosing the Right Metrics**
 
 The choice of metrics depends on several factors:
+
 - **Problem Context**: If the absolute magnitude of errors is crucial (e.g., predicting financial losses), MAE might be better. If understanding the proportion of variance explained is important, $R^2$ is a good choice.
 - **Outliers**: If your data has outliers, MAE often more robust than MSE and RMSE
 - **Scale of the target variable**: metrics like MSE and RMSE are affected by the scale of your target variable. Consider normalisation if the scale is significantly different from the range of predicted values.
@@ -461,6 +480,7 @@ Hyperparameter tuning is the process of finding the optimal settings for a machi
    - **Requires More Setup**: Compared to grid search and random search, it requires more initial setup to define the statistical model and the acquisition function used to select the next hyperparameter configuration
 
 **Choosing the Right Technique**
+
 - **Grid Search**: Simple and effective, especially for smaller hyperparameter spaces. It's a good default for hyperparameter tuning.
 - **Random Search**: A stronger alternative to grid search for larger hyperparameter spaces. It's more computationally efficient and less prone to getting stuck in local optima.
 - **Bayesian Optimization**: Best for large, complex hyperparameter spaces where other methods are computationally infeasible. It's particularly useful when dealing with expensive-to-evaluate models or when trying to optimise complex non-convex objective functions.

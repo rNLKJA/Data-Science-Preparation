@@ -31,16 +31,17 @@ My skill set covers critical areas of modern data science:
 
 I bring a comprehensive skill set that combines technical expertise, research acumen, and practical industry experience. This unique blend equips me to drive innovation and deliver value in any data science role, whether it's developing cutting-edge algorithms, managing large-scale data infrastructures, or translating complex findings into business strategies.
 
-
 ## Topic Index
 
 **Core Data Science**
+
 - [Machine Learning](./Machine%20Learning/)
 - [Deep Learning](./Deep%20Learning/)
 - [Applied Statistics](./Applied%20Statistics/)
 - [Data Structures & Algorithms](./Data%20Structures%20&%20Algorithms/)
 
 **Advanced Machine Learning**
+
 - [Machine Learning System Design](./Machine%20Learning%20System%20Design/)
 - [Natural Language Processing](./Natural%20Language%20Processing/)
 - [Time Series Analysis](./Time%20Series%20Analysis/)
@@ -48,54 +49,58 @@ I bring a comprehensive skill set that combines technical expertise, research ac
 - [Reinforcement Learning](./Reinforcement%20Learning/)
 
 **Statistical Methods and Analysis**
+
 - [Causal Inference](./Causal%20Inference/)
 - [AB Testing](./AB%20Testing/)
 - [Experimental Design](./Experimental%20Design/)
 
 **Data Engineering**
+
 - [Big Data Technologies](./Big%20Data%20Technologies/)
 - [Data Pipelines and ETL](./Data%20Pipelines/)
 - [SQL & Database Management](./SQL%20&%20Database%20Management/)
 
 **Cloud and DevOps**
+
 - [AWS Cloud Computing](./AWS%20Cloud%20Computing/)
 - [Kubernetes](./Kubernetes/)
 - [DevOps](./DevOps/)
 
 **Data Analysis and Business Intelligence**
+
 - [Storytelling with Data](./Storytelling%20with%20Data/)
 - [Product Sense](./Product%20Sense/)
 - [Business Intelligence](./Business%20Intelligence/)
 
 **Advanced Data Science Concepts**
+
 - [Feature Engineering](./Feature%20Engineering/)
 - [Model Interpretability and Explainable AI](./Model%20Interpretability/)
 
 **Ethics and Compliance**
+
 - [Ethics in AI and Data Science](./Ethics%20in%20AI/)
 - [Data Privacy and Security](./Data%20Privacy/)
 
-
-
 ## Progress Tracker
 
-| Date | Topic | Resources Used | 
-|------|-------|----------------|
-| 05-Sep-2024 | Machine Learning | Hyperparameter Tuning |
-| 05-Sep-2024 | Machine Learning | Regression Model Metrics |
-| 05-Sep-2024 | Machine Learning | Handling Missing Values |
-| 28-Aug-2024 | Machine Learning | Euclidean and Manhattan Distance |
-| 28-Aug-2024 | Machine Learning | Overfitting & Underfitting |
-| 28-Aug-2024 | Machine Learning | Evaluation Metrics |
-| 27-Aug-2024 | Machine Learning | Explain AUC |
-| 27-Aug-2024 | Machine Learning | Curse of Dimensionality |
-| 25-Aug-2024 | Machine Learning | Imbalanced labels | 
-| 25-Aug-2024 | Machine Learning | Multicollinearity |
-| 25-Aug-2024 | Machine Learning | Cross-validation |
-| 24-Aug-2024 | Storytelling with Data | Let's practice 1.9, 1.10 |
-| 24-Aug-2024 | Google Cyberseucrity | Foundation model 1 |
-| 23-Aug-2024 | Kubernets | History & Technology Overview |  
-| 23-Aug-2024 | Machine Learning | Bias-Variance Trade-off |  
+| Date        | Topic                  | Resources Used                   |
+| ----------- | ---------------------- | -------------------------------- |
+| 05-Sep-2024 | Machine Learning       | Hyperparameter Tuning            |
+| 05-Sep-2024 | Machine Learning       | Regression Model Metrics         |
+| 05-Sep-2024 | Machine Learning       | Handling Missing Values          |
+| 28-Aug-2024 | Machine Learning       | Euclidean and Manhattan Distance |
+| 28-Aug-2024 | Machine Learning       | Overfitting & Underfitting       |
+| 28-Aug-2024 | Machine Learning       | Evaluation Metrics               |
+| 27-Aug-2024 | Machine Learning       | Explain AUC                      |
+| 27-Aug-2024 | Machine Learning       | Curse of Dimensionality          |
+| 25-Aug-2024 | Machine Learning       | Imbalanced labels                |
+| 25-Aug-2024 | Machine Learning       | Multicollinearity                |
+| 25-Aug-2024 | Machine Learning       | Cross-validation                 |
+| 24-Aug-2024 | Storytelling with Data | Let's practice 1.9, 1.10         |
+| 24-Aug-2024 | Google Cyberseucrity   | Foundation model 1               |
+| 23-Aug-2024 | Kubernets              | History & Technology Overview    |
+| 23-Aug-2024 | Machine Learning       | Bias-Variance Trade-off          |
 
 ---
 
@@ -108,4 +113,3 @@ For more details about my experience and projects, please visit my [LinkedIn](ht
   <a href="https://www.linkedin.com/in/sunchuangyuhuang/" target="_blank">LinkedIn</a> | 
   <a href="mailto:huang@rin.contact">Email</a>
 </p>
-

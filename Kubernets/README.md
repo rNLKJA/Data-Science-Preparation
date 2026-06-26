@@ -54,8 +54,8 @@ In the 2020s, we entered the "Container Deployment Era", which brought about tra
 
 <img src="https://courses.devopsdirective.com/_next/image?url=%2Fkubernetes-beginner-to-pro%2F02-01-control-and-data-planes.jpg&w=1920&q=75" align=center />
 
-
 The first concepts to understand with regard to kubernetes are:
+
 - **Node**: A node is a worker machine in Kubernetes, previously known as a minion. A node may be a VM or physical machine, depending on the cluster. Each node has the services necessary to run pods and is managed by the control plane.
 - **Control Plane**: A subset of nodes in the cluster dedicated to performing system tasks. Nodes that are part of the control plane are referred to as "control plane nodes".
 - **Data Plane**: A subset of nodes in the cluster dedicated to running user workloads. Nodes that are part of the data plane are referred to as "worker nodes".
@@ -65,6 +65,7 @@ The first concepts to understand with regard to kubernetes are:
 <img src="https://courses.devopsdirective.com/_next/image?url=%2Fkubernetes-beginner-to-pro%2F02-02-k8s-architecture.jpg&w=1920&q=75" align=center />
 
 Kubernets is comprised of many smaller components
+
 - **etcd**: Key-value store used for storing all cluster data. It serves as the source of truth for the cluster state and configuration.
 - **kube-apiserver**: The front end for the Kubernetes control plane.
 - **kube-scheduler**: Schedules pods onto the appropriate nodes based on resource availability and other constraints.
